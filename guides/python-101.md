@@ -306,9 +306,9 @@ logging.error("Модель не загрузилась")
 1. Убедись, что стоишь в **корне** проекта (`pwd` / смотри путь).
 2. Запусти через:
 
-```bash
-python -m project.src.service.api
-```
+    ```bash
+    python -m project.src.service.api
+    ```
 
 3. Добавь `__init__.py` в нужные папки.
 

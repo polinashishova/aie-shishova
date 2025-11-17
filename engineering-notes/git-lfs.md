@@ -138,18 +138,18 @@ git commit -m "Настроил Git LFS для весов моделей"
 
 1. Кладёшь, например, обученную модель:
 
-```bash
-ls project/models/
-# model_final.pt
-```
+    ```bash
+    ls project/models/
+    # model_final.pt
+    ```
 
 2. Добавляешь в Git (обычно вместе с кодом):
 
-```bash
-git add project/models/model_final.pt
-git commit -m "Добавил обученную модель"
-git push
-```
+    ```bash
+    git add project/models/model_final.pt
+    git commit -m "Добавил обученную модель"
+    git push
+    ```
 
 3. Git:
 
