@@ -23,7 +23,7 @@ app = FastAPI(
 # ---------- Модели запросов/ответов ----------
 
 
-class PredictRequest(BaseModel):
+class QualityRequest(BaseModel):
     """Агрегированные признаки датасета – 'фичи' для заглушки модели."""
 
     n_rows: int = Field(..., ge=0, description="Число строк в датасете")
@@ -46,7 +46,7 @@ class PredictRequest(BaseModel):
     )
 
 
-class PredictResponse(BaseModel):
+class QualityResponse(BaseModel):
     """Ответ заглушки модели качества датасета."""
 
     ok_for_model: bool = Field(
@@ -91,11 +91,11 @@ def health() -> dict[str, str]:
     }
 
 
-# ---------- Заглушка /predict по агрегированным признакам ----------
+# ---------- Заглушка /quality по агрегированным признакам ----------
 
 
-@app.post("/predict", response_model=PredictResponse, tags=["prediction"])
-def predict(req: PredictRequest) -> PredictResponse:
+@app.post("/quality", response_model=QualityResponse, tags=["quality"])
+def quality(req: QualityRequest) -> QualityResponse:
     """
     Эндпоинт-заглушка, который принимает агрегированные признаки датасета
     и возвращает эвристическую оценку качества.
@@ -146,12 +146,12 @@ def predict(req: PredictRequest) -> PredictResponse:
 
     # Примитивный лог — на семинаре можно обсудить, как это превратить в нормальный logger
     print(
-        f"[predict] n_rows={req.n_rows} n_cols={req.n_cols} "
+        f"[quality] n_rows={req.n_rows} n_cols={req.n_cols} "
         f"max_missing_share={req.max_missing_share:.3f} "
         f"score={score:.3f} latency_ms={latency_ms:.1f} ms"
     )
 
-    return PredictResponse(
+    return QualityResponse(
         ok_for_model=ok_for_model,
         quality_score=score,
         message=message,
@@ -161,16 +161,16 @@ def predict(req: PredictRequest) -> PredictResponse:
     )
 
 
-# ---------- /predict-from-csv: реальный CSV через нашу EDA-логику ----------
+# ---------- /quality-from-csv: реальный CSV через нашу EDA-логику ----------
 
 
 @app.post(
-    "/predict-from-csv",
-    response_model=PredictResponse,
-    tags=["prediction"],
+    "/quality-from-csv",
+    response_model=QualityResponse,
+    tags=["quality"],
     summary="Оценка качества по CSV-файлу с использованием EDA-ядра",
 )
-async def predict_from_csv(file: UploadFile = File(...)) -> PredictResponse:
+async def quality_from_csv(file: UploadFile = File(...)) -> QualityResponse:
     """
     Эндпоинт, который принимает CSV-файл, запускает EDA-ядро
     (summarize_dataset + missing_table + compute_quality_flags)
@@ -229,12 +229,12 @@ async def predict_from_csv(file: UploadFile = File(...)) -> PredictResponse:
         n_cols = int(df.shape[1])
 
     print(
-        f"[predict-from-csv] filename={file.filename!r} "
+        f"[quality-from-csv] filename={file.filename!r} "
         f"n_rows={n_rows} n_cols={n_cols} score={score:.3f} "
         f"latency_ms={latency_ms:.1f} ms"
     )
 
-    return PredictResponse(
+    return QualityResponse(
         ok_for_model=ok_for_model,
         quality_score=score,
         message=message,

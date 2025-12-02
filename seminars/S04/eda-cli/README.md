@@ -2,7 +2,7 @@
 
 Расширенная версия проекта `eda-cli` из Семинара 03.
 
-К существующему CLI-приложению для EDA добавлен **HTTP-сервис на FastAPI** с эндпоинтами `/health`, `/predict` и `/predict-from-csv`.  
+К существующему CLI-приложению для EDA добавлен **HTTP-сервис на FastAPI** с эндпоинтами `/health`, `/quality` и `/quality-from-csv`.  
 Используется в рамках Семинара 04 курса «Инженерия ИИ».
 
 ---
@@ -143,19 +143,19 @@ http://127.0.0.1:8000/docs
 Через `/docs` можно:
 
 - вызывать `GET /health`;
-- вызывать `POST /predict` (форма для JSON);
-- вызывать `POST /predict-from-csv` (форма для загрузки файла).
+- вызывать `POST /quality` (форма для JSON);
+- вызывать `POST /quality-from-csv` (форма для загрузки файла).
 
 ---
 
-### 3. `POST /predict` – заглушка по агрегированным признакам
+### 3. `POST /quality` – заглушка по агрегированным признакам
 
 Эндпоинт принимает **агрегированные признаки датасета** (размеры, доля пропусков и т.п.) и возвращает эвристическую оценку качества.
 
 **Пример запроса:**
 
 ```http
-POST /predict
+POST /quality
 Content-Type: application/json
 ```
 
@@ -196,14 +196,14 @@ Content-Type: application/json
 **Пример вызова через `curl`:**
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/predict" \
+curl -X POST "http://127.0.0.1:8000/quality" \
   -H "Content-Type: application/json" \
   -d '{"n_rows": 10000, "n_cols": 12, "max_missing_share": 0.15, "numeric_cols": 8, "categorical_cols": 4}'
 ```
 
 ---
 
-### 4. `POST /predict-from-csv` – оценка качества по CSV-файлу
+### 4. `POST /quality-from-csv` – оценка качества по CSV-файлу
 
 Эндпоинт принимает CSV-файл, внутри:
 
@@ -213,19 +213,19 @@ curl -X POST "http://127.0.0.1:8000/predict" \
   - `summarize_dataset`,
   - `missing_table`,
   - `compute_quality_flags`;
-- возвращает оценку качества датасета в том же формате, что `/predict`.
+- возвращает оценку качества датасета в том же формате, что `/quality`.
 
 **Запрос:**
 
 ```http
-POST /predict-from-csv
+POST /quality-from-csv
 Content-Type: multipart/form-data
 file: <CSV-файл>
 ```
 
 Через Swagger:
 
-- в `/docs` открыть `POST /predict-from-csv`,
+- в `/docs` открыть `POST /quality-from-csv`,
 - нажать `Try it out`,
 - выбрать файл (например, `data/example.csv`),
 - нажать `Execute`.
@@ -233,7 +233,7 @@ file: <CSV-файл>
 **Пример вызова через `curl` (Linux/macOS/WSL):**
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/predict-from-csv" \
+curl -X POST "http://127.0.0.1:8000/quality-from-csv" \
   -F "file=@data/example.csv"
 ```
 
@@ -281,4 +281,4 @@ uv run pytest -q
 
 1. Запустить тесты `pytest`;
 2. Проверить работу CLI (`uv run eda-cli ...`);
-3. Проверить работу HTTP-сервиса (`uv run uvicorn ...`, затем `/health` и `/predict`/`/predict-from-csv` через `/docs` или HTTP-клиент).
+3. Проверить работу HTTP-сервиса (`uv run uvicorn ...`, затем `/health` и `/quality`/`/quality-from-csv` через `/docs` или HTTP-клиент).
