@@ -61,7 +61,7 @@
 - `lectures/` — материалы лекций;
 - `seminars/` — материалы семинаров;
 - `project/` — методические материалы по сквозному проекту;
-- `guides/` — 101-гайды (Git, Python, *nix, Jupyter);
+- `guides/` — 101-гайды (Git, Python, *nix, Jupyter и т.п.);
 - `engineering-notes/` — инженерные шпаргалки (TDD/BDD, Git LFS, DVC/версионирование данных, MLOps-инструменты и т.д.);
 - `evaluation/` — материалы по оцениванию.
 
