@@ -21,6 +21,15 @@ def _sample_df() -> pd.DataFrame:
         }
     )
 
+def _dif_sample_df() -> pd.DataFrame:
+    return pd.DataFrame(
+        {
+            "age": [10, 10, 10, 10, 10],
+            "height": [140, 150, 160, 170, 180],
+            "city": ["A", "B", "C", 'D', 'E'],
+        }
+    )
+
 
 def test_summarize_dataset_basic():
     df = _sample_df()
@@ -46,6 +55,8 @@ def test_missing_table_and_quality_flags():
     summary = summarize_dataset(df)
     flags = compute_quality_flags(summary, missing_df)
     assert 0.0 <= flags["quality_score"] <= 1.0
+    assert flags['has_constant_columns'] is False
+    assert flags['has_high_cardinality_categorials'] is False
 
 
 def test_correlation_and_top_categories():
@@ -59,3 +70,13 @@ def test_correlation_and_top_categories():
     city_table = top_cats["city"]
     assert "value" in city_table.columns
     assert len(city_table) <= 2
+
+
+def test_new_flags():
+    df = _dif_sample_df()
+    missing_df = missing_table(df)
+    summary = summarize_dataset(df)
+    flags = compute_quality_flags(summary, missing_df)
+
+    assert flags['has_constant_columns'] is True
+    assert flags['has_high_cardinality_categorials'] is False
