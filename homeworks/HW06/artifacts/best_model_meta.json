@@ -1,0 +1,14 @@
+{
+  "best_model_label": "StackingClassifier",
+  "test_metrics": {
+    "model": "StackingClassifier",
+    "accuracy": 0.9822,
+    "precision": 0.9644970414201184,
+    "recall": 0.6626016260162602,
+    "f1-score": 0.7855421686746988,
+    "roc auc": 0.8991315828177214,
+    "average precision": 0.7961575154623175
+  },
+  "search_summary": null,
+  "random_state": 42
+}
