@@ -1,0 +1,13 @@
+{
+    "experiment_id": "C4",
+    "dataset": "STL10",
+    "architecture": "ResNet18",
+    "augmentations": "none",
+    "pretrained": true,
+    "finetune_strategy": "layer4+fc",
+    "seed": 42,
+    "epochs": 10,
+    "lr": 0.001,
+    "best_val_accuracy": 85.5,
+    "test_accuracy": 67.875
+}

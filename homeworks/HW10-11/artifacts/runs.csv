@@ -1,0 +1,7 @@
+experiment_id,task,dataset,seed,model_summary,optimizer,lr,epochs_trained,best_val_accuracy,test_accuracy,precision,recall,mean_iou,notes
+C1,classification,STL10,42,SimpleCNN (3 conv layers),Adam,0.001,10.0,59.7,59.4375,,,,No augmentations
+C2,classification,STL10,42,SimpleCNN (3 conv layers),Adam,0.001,10.0,60.5,59.6625,,,,With augmentations
+C3,classification,STL10,42,ResNet18 (frozen backbone),Adam,0.001,10.0,79.6,52.0875,,,,Head only training
+C4,classification,STL10,42,ResNet18 (layer4+fc unfrozen),Adam,0.001,10.0,85.5,67.875,,,,Fine-tuning last layers
+V1,segmentation,OxfordIIITPet,42,DeepLabV3 ResNet50,,,,,,1.0,0.39140625,0.39140625,"Threshold=0.5, no postprocessing"
+V2,segmentation,OxfordIIITPet,42,DeepLabV3 ResNet50,,,,,,1.0,0.3725341796875,0.3725341796875,"Threshold=0.7, remove small components"

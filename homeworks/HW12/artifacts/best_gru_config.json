@@ -1,0 +1,20 @@
+{
+  "architecture": "GRU",
+  "input_size": 1,
+  "hidden_size": 64,
+  "num_layers": 2,
+  "output_size": 1,
+  "dropout": 0.2,
+  "window_size": 14,
+  "horizon": 1,
+  "batch_size": 32,
+  "learning_rate": 0.001,
+  "optimizer": "Adam",
+  "criterion": "MSELoss",
+  "num_epochs": 50,
+  "best_epoch": 23,
+  "best_val_mae": 5.766364574432373,
+  "seed": 42,
+  "scaler": "StandardScaler",
+  "device": "cpu"
+}
