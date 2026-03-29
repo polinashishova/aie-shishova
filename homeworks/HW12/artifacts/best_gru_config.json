@@ -13,7 +13,7 @@
   "criterion": "MSELoss",
   "num_epochs": 50,
   "best_epoch": 23,
-  "best_val_mae": 5.766364574432373,
+  "best_val_mae": 5.7885870933532715,
   "seed": 42,
   "scaler": "StandardScaler",
   "device": "cpu"
