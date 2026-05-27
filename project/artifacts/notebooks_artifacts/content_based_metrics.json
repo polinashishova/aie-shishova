@@ -1,0 +1,74 @@
+{
+    "all_ratings_onehot_genres": {
+        "precision@10": 0.004403626808925693,
+        "recall@10": 0.002111752429428456,
+        "hit_rate@10": 0.039811294464239505,
+        "ndcg@10": 0.0038588823807842263
+    },
+    "pos_ratings_onehot_genres": {
+        "precision@10": 0.003455641047547731,
+        "recall@10": 0.003081712267389085,
+        "hit_rate@10": 0.03217424954392172,
+        "ndcg@10": 0.003302541462674958
+    },
+    "nonneg_ratings_onehot_genres": {
+        "precision@10": 0.00360333428000578,
+        "recall@10": 0.0021513242467764656,
+        "hit_rate@10": 0.032749884157187485,
+        "ndcg@10": 0.0031798202799324894
+    },
+    "all_ratings_tfidf_genres_decade": {
+        "precision@10": 0.006328502896271672,
+        "recall@10": 0.0035370127803756152,
+        "hit_rate@10": 0.05558651989569441,
+        "ndcg@10": 0.005381576334502969
+    },
+    "pos_ratings_tfidf_genres_decade": {
+        "precision@10": 0.005253318189356666,
+        "recall@10": 0.004981060342974337,
+        "hit_rate@10": 0.04805029676498525,
+        "ndcg@10": 0.006001419697544798
+    },
+    "nonneg_ratings_tfidf_genres_decade": {
+        "precision@10": 0.006106535527620415,
+        "recall@10": 0.0038720070775485845,
+        "hit_rate@10": 0.05432405096087253,
+        "ndcg@10": 0.005897377470876188
+    },
+    "all_ratings_tfidf_genres_decade_tags_svd": {
+        "precision@10": 0.0019497581463861298,
+        "recall@10": 0.0007819327625472742,
+        "hit_rate@10": 0.019492605052053268,
+        "ndcg@10": 0.0010975230922047508
+    },
+    "pos_ratings_tfidf_genres_decade_tags_svd": {
+        "precision@10": 0.004385387402690736,
+        "recall@10": 0.0035695682873015775,
+        "hit_rate@10": 0.04130084079224441,
+        "ndcg@10": 0.005723456091757375
+    },
+    "nonneg_ratings_tfidf_genres_decade_tags_svd": {
+        "precision@10": 0.008087572183774034,
+        "recall@10": 0.004336297125178593,
+        "hit_rate@10": 0.07539000413546385,
+        "ndcg@10": 0.007258800366358287
+    },
+    "all_ratings_tfidf_genres_decade_tags_svd_without_variance_ratio": {
+        "precision@10": 0.015825487190716008,
+        "recall@10": 0.00935932283680085,
+        "hit_rate@10": 0.12804805223241833,
+        "ndcg@10": 0.014408655571416091
+    },
+    "pos_ratings_tfidf_genres_decade_tags_svd_without_variance_ratio": {
+        "precision@10": 0.012675709496982095,
+        "recall@10": 0.01306387003409503,
+        "hit_rate@10": 0.10594585358253886,
+        "ndcg@10": 0.014391523083991439
+    },
+    "nonneg_ratings_tfidf_genres_decade_tags_svd_without_variance_ratio": {
+        "precision@10": 0.014994295052889095,
+        "recall@10": 0.01031315871430934,
+        "hit_rate@10": 0.12264888915462151,
+        "ndcg@10": 0.01457029656438786
+    }
+}

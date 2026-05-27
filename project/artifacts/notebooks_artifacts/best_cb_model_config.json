@@ -1,0 +1,7 @@
+{
+    "name": "nonneg_ratings_tfidf_genres_decade_tags_svd_without_variance_ratio",
+    "svd_params": {
+        "n_components": 100,
+        "random_state": 42
+    }
+}

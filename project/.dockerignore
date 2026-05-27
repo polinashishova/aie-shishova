@@ -1,0 +1,44 @@
+# Виртуальные окружения
+mrh-venv/
+venv/
+.env
+.venv/
+
+# Кэш и артефакты разработки
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Jupyter
+*.ipynb_checkpoints/
+*.ipynb
+
+# Логи и временные файлы
+*.log
+artifacts/logs/
+artifacts/notebooks_artifacts/
+notebooks/
+
+# Тесты и документация
+tests/
+docs/
+*.md
+
+
+# Git и IDE
+.git/
+.gitignore
+.vscode/
+.idea/
+
+# Сырые данные (не нужны в контейнере)
+data/raw/
+data/interim/
+
+# Сборочные артефакты
+build/
+dist/
+*.egg-info/
